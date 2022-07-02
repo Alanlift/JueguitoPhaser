@@ -59,7 +59,7 @@ function preload ()
     this.load.image('star', 'assets/star.png');
     this.load.image('star2', 'assets/star2.png');
     this.load.image('bomb', 'assets/bomb.png');
-    this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 42 });
+    this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 36 });
 }
 
 function create ()
@@ -80,7 +80,7 @@ function create ()
     platforms.create(600, 400, 'ground');
     platforms.create(50, 250, 'ground');
     platforms.create(750, 220, 'ground');
-    platforms.create(400, 100, 'ground');
+    platforms.create(400, 100, 'ground').setScale(0.6).refreshBody();
 
     // The player and its settings
     player = this.physics.add.sprite(100, 450, 'dude');
@@ -142,7 +142,7 @@ function create ()
     bombs = this.physics.add.group();
 
     //  The score
-    scoreText = this.add.text(550, 555, 'Puntaje: 0', { fontSize: '32px', fill: '#FA7414', backgroundColor: '#F6CCAD', fontStyle: 'bold'});
+    scoreText = this.add.text(550, 555, 'Puntaje: 0', { fontSize: '32px', fill: '#0b214c', backgroundColor: '#b5c9ef', fontStyle: 'bold'});
 
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(player, platforms);
@@ -163,8 +163,8 @@ function update ()
     {   
         this.scene.stop;
         this.sound.stopAll();
-        endtext = this.add.text(15, 200, 'FIN DEL JUEGO :(,', { fontSize: '80px', fill: '#ff0000', backgroundColor: '#F6CCAD', fontStyle: 'bold'});
-        againtext = this.add.text(10, 380, 'Para reiniciar presiona la tecla "↓"', { fontSize: '36px', fill: '#ff0000', backgroundColor: '#F6CCAD', fontStyle: 'italic'});
+        endtext = this.add.text(80, 200, 'FIN DEL JUEGO', { fontSize: '80px', fill: '#0b214c', backgroundColor: '#b5c9ef', fontStyle: 'bold'});
+        againtext = this.add.text(10, 380, 'Para reiniciar presiona la tecla "↓"', { fontSize: '36px', fill: '#0b214c', backgroundColor: '#b5c9ef', fontStyle: 'italic'});
         if (cursors.down.isDown)
         {
             this.scene.restart();
